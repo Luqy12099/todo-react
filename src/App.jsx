@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {count: 0};
-  }
-  
-  handleClick() {
-    this.setState({count: this.state.count + 1});
-  }
-  
-  render() {
-    return (
-      <div>
-        <h1>{this.state.count}</h1>
-        <button onClick={() => {this.handleClick()}}>+</button>
-      </div>
-    );
-  }
+function App() {
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      title: 'Finish Progate React Course',
+      completed: false,
+    },
+    {
+      id: 2,
+      title: 'Have lunch with Guru Domba',
+      completed: false,
+    },
+    {
+      id: 3,
+      title: 'Study React with Ninja Ken',
+      completed: false,
+    },
+  ])
+
+  console.log(todos)
+
+  return (
+    <div>
+      <h1>My Todo List</h1>
+      {todos.map((todo) => {
+        return(
+          <p key={todo.id}>{todo.title}</p>
+        )
+      })}
+    </div>
+  )
 }
 
 export default App;
